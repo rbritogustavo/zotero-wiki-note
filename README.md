@@ -3,7 +3,7 @@ Ever wanted to recreate the style of Wikipedia in your academic notes? Well, now
 ## How it works
 This template helps you import your Zotero highlights and comments to a new note formatted in the style of Wikipedia (infobox included) without the need of installing a specific theme or complex CSS schemes. 
 ## Requirements 
-The template uses two Obsidian plugins, but only one is required:
+The template uses two Obsidian plugins (which you can install from the Community Plugins), but only one is required:
 - [Zotero Integration](https://github.com/mgmeyers/obsidian-zotero-integration)
 - [Auto Note Mover](https://github.com/farux/obsidian-auto-note-mover)
 
