@@ -27,3 +27,6 @@ Once you have configured the General Settings, you must configure the Import For
 6. Define the **Bibliography Style** to autogenerate the full citation in the template; you can change to whatever citation format you prefer but the format must be installed in Zotero, otherwise it won't work.
 
 ![config2](screenshots/zotero_integration_config_2.png)
+
+You can leave all other settings as default.
+If you want to use the Auto Note Mover plugin you can find how to configure it [here](https://github.com/farux/obsidian-auto-note-mover).
