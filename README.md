@@ -39,7 +39,7 @@ Once configured, the workflow is straightforward:
 5. Select which file you are importing from Zotero in the pop-up and press Enter.
 6. The note is imported to Obsidian.
 And the result should be something like this:
-[note1](screenshots/formatted_note_1.png)
-[note2](screenshots/formatted_note_2.png)
+![note1](screenshots/formatted_note_1.png)
+![note2](screenshots/formatted_note_2.png)
 ## References
 The infobox code was found in [Joshua Plunkket patreon page](https://www.patreon.com/posts/65804706) but the original creator of the infobox and CSS code is **SIRvb**, the creator of the ITS Theme. You can find the CSS codes from the repository [here](https://github.com/SlRvb/Obsidian--ITS-Theme/blob/main/Snippets/S%20-%20Callouts.css).
