@@ -30,5 +30,13 @@ Once you have configured the General Settings, you must configure the Import For
 
 You can leave all other settings as default.
 If you want to use the Auto Note Mover plugin you can find how to configure it [here](https://github.com/farux/obsidian-auto-note-mover).
+## How to use
+Once configured, the workflow is straightforward:
+1. Start Zotero (it needs to be running so Obsidian can communicate with it).
+2. Start Obsidian.
+3. Open the Command Palette in Obsidian (Ctrl + P / Cmd + P).
+4. Type the name of the format you defined in Zotero Integration settings and press Enter.
+5. Select which file you are importing from Zotero in the pop-up and press Enter.
+6. The note is imported to Obsidian.
 ## References
 The infobox code was found in [Joshua Plunkket patreon page](https://www.patreon.com/posts/65804706) but the original creator of the infobox and CSS code is **SIRvb**, the creator of the ITS Theme. You can find the CSS codes from the repository [here](https://github.com/SlRvb/Obsidian--ITS-Theme/blob/main/Snippets/S%20-%20Callouts.css).
