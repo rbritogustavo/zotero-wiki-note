@@ -30,3 +30,5 @@ Once you have configured the General Settings, you must configure the Import For
 
 You can leave all other settings as default.
 If you want to use the Auto Note Mover plugin you can find how to configure it [here](https://github.com/farux/obsidian-auto-note-mover).
+## References
+The infobox comes from [Joshua Plunkket](https://www.patreon.com/posts/65804706); the infobox and CSS code both comes from **SIRvb**. You can find the CSS codes from the repository [here](https://github.com/SlRvb/Obsidian--ITS-Theme/blob/main/Snippets/S%20-%20Callouts.css).
