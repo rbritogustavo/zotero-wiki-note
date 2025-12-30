@@ -37,8 +37,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor nunc sit ame
 ---
 {% for annotation in annotations -%}
 {%- if annotation.annotatedText -%} 
-- [**"{{annotation.annotatedText | safe}}"**](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.pageLabel}}&annotation={{annotation.id}})
-- {%- if annotation.comment -%}  - *{{annotation.comment|nl2br}}*{%- endif -%}
+- [**"{{annotation.annotatedText | safe}}"**](zotero://open-pdf/library/items/{{annotation.attachment.itemKey}}?page={{annotation.pageLabel}}&annotation={{annotation.id}})<br>
+{%- if annotation.comment -%}  -- *{{annotation.comment|nl2br}}*{%- endif -%}
 {% else %}
 {{annotation.type | capitalize}}
 {%- endif -%}
