@@ -2,13 +2,17 @@
 cssclasses:
   - infobox
 cssclass: infobox
-created in: '{{date | format("YYYY-MM-DD")}}'
-last updated: 2025-12-30
+created in: '{{exportDate | format("YYYY-MM-DD")}}'
+last updated: 2026-03-23
+read status:
+reason added:
+alias: '{% if creators.length > 1 %}{{creators[0].lastName}} et al. {{date | format("YYYY")}}{% else %}{{creators[0].lastName}} {{date | format("YYYY")}}{% endif %}'
 tags:
-  - scientific-paper
+  - bibliographic-note
+created: 2025-12-29
 ---
 >[!infobox]+  
-> ![[zotero_logo.png]]  
+> [![Zotero Logo](zotero_logo.png)]({{url}})  
 > ###### **Bibliography**  
 >  |  |  
 > ---|---|  
