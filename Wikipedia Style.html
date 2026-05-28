@@ -1,0 +1,205 @@
+<!--
+  ZotFlow Source Note — Custom Views Template
+  ============================================
+  Filter rule: cssClass  contains  infobox
+  (The ZotFlow template sets `cssClass: infobox` in every source note's frontmatter.)
+
+  Requires: the infobox.css snippet to be active in Obsidian.
+  The >[!infobox]+ callout inside {{file.content}} is rendered by Obsidian's
+  markdown engine as usual, so the CSS snippet handles all infobox styling.
+  This template only adds the outer Wikipedia-style chrome.
+
+  NOTE ON TITLE DUPLICATION
+  ─────────────────────────
+  The ZotFlow note body already contains `# {{ item.title }}` as an H1.
+  This template does NOT add its own H1 to avoid duplication.
+  If you want to suppress the body title and use the top bar as the
+  sole heading, remove the `# {{ item.title }}` line from your ZotFlow
+  source note template.
+-->
+
+<div class="cv-wiki-wrap">
+
+  <!-- ── Top bar ─────────────────────────────────────────────── -->
+  <div class="cv-top-bar">
+    <div class="cv-top-bar-left">
+      <span class="cv-pill cv-pill-type">{{itemType}}</span>
+      <span class="cv-separator">·</span>
+      <span class="cv-publication">{{publication}}</span>
+      <span class="cv-separator">·</span>
+      <span class="cv-year">{{year}}</span>
+    </div>
+    <div class="cv-top-bar-right">
+      <span class="cv-pill cv-pill-status cv-status-{{readStatus}}">{{readStatus}}</span>
+    </div>
+  </div>
+
+  <!-- ── Main article body ────────────────────────────────────── -->
+  <!--
+    {{file.content}} renders the note body as markdown via Obsidian's engine.
+    The infobox callout floats right (handled by infobox.css).
+    The title, abstract, attachments, and annotations sections follow normally.
+  -->
+  <div class="cv-article-body">
+    {{file.content}}
+  </div>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <div class="cv-footer">
+    <span class="cv-citation-key">{{citationKey}}</span>
+    <span class="cv-reason">{{reasonAdded}}</span>
+  </div>
+
+</div>
+
+<style>
+  /* ── Layout ─────────────────────────────────────────────────── */
+  .cv-wiki-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+    font-family: var(--font-text, Georgia, "Times New Roman", serif);
+    color: var(--text-normal);
+  }
+
+  /* ── Top bar ─────────────────────────────────────────────────── */
+  .cv-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0 10px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    margin-bottom: 20px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .cv-top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .cv-separator {
+    color: var(--text-faint);
+  }
+
+  .cv-publication {
+    font-style: italic;
+  }
+
+  .cv-year {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Pills ───────────────────────────────────────────────────── */
+  .cv-pill {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 99px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .cv-pill-type {
+    background: rgba(var(--color-blue-rgb, 82, 139, 212), 0.15);
+    color: var(--color-blue, #528bd4);
+    border: 1px solid rgba(var(--color-blue-rgb, 82, 139, 212), 0.3);
+  }
+
+  /* Read status colours — add/adjust to match your own values */
+  .cv-pill-status                { background: rgba(166,189,197,0.15); color: var(--text-muted); border: 1px solid rgba(166,189,197,0.3); }
+  .cv-status-read                { background: rgba(86,179,117,0.15);  color: #56b375; border-color: rgba(86,179,117,0.35); }
+  .cv-status-unread              { background: rgba(208,181,48,0.15);  color: #c8ae28; border-color: rgba(208,181,48,0.35); }
+  .cv-status-reading,
+  .cv-status-in-progress,
+  .cv-status-in\ progress        { background: rgba(82,139,212,0.15);  color: #528bd4; border-color: rgba(82,139,212,0.35); }
+  .cv-status-abandoned,
+  .cv-status-skipped             { background: rgba(193,67,67,0.15);   color: #c14343; border-color: rgba(193,67,67,0.35); }
+
+  /* ── Article body ────────────────────────────────────────────── */
+  .cv-article-body {
+    /* Matches Wikipedia's comfortable reading measure */
+    line-height: 1.7;
+  }
+
+  /*
+    The infobox callout rendered by Obsidian inside .cv-article-body will
+    be targeted by the rules in infobox.css (float:right, max-width:350px,
+    bordered content, etc.) — no extra CSS needed here.
+
+    The headings below just polish the H2/H3 section dividers that the
+    ZotFlow template generates (Abstract, Attachments, Annotations).
+  */
+  .cv-article-body h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 4px;
+    /* No border-bottom: ZotFlow adds --- after the title which renders as <hr>.
+       Adding one here would double it. */
+  }
+
+  .cv-article-body h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 28px;
+    /* Same: ZotFlow's --- after # Abstract etc. already provides the rule. */
+  }
+
+  /*
+    Suppress all borders on the outer callout element and its title bar.
+    infobox.css already does this via .callout.callout (double-class for
+    specificity), but the active theme may use a `border` shorthand that
+    wins in the Custom Views rendering context. Targeting the element
+    directly here with !important ensures the only visible border is the
+    one infobox.css intentionally places on .callout-content.
+  */
+  .cv-article-body .callout[data-callout~=infobox] {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  .cv-article-body .callout[data-callout~=infobox] > .callout-title {
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Blockquote used for abstract text */
+  .cv-article-body blockquote {
+    border-left: 3px solid var(--background-modifier-border);
+    padding-left: 14px;
+    margin-left: 0;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Annotation cite callouts keep their own styling from the snippet */
+
+  /* ── Footer ──────────────────────────────────────────────────── */
+  .cv-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 10px;
+    border-top: 1px solid var(--background-modifier-border);
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .cv-citation-key {
+    font-family: var(--font-monospace, monospace);
+    letter-spacing: 0.02em;
+  }
+
+  .cv-reason:empty {
+    display: none; /* hide if reasonAdded is blank */
+  }
+</style>
